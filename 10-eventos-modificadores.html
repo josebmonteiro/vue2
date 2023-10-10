@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Eventos Modificadores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <div id="app">
+        <a :href="urlLink" @click.prevent="showAlert">{{ textLink }}</a>
+
+        <form action="#" method="POST" @submit.prevent="showAlert">
+            <input type="text" placeholder="Nome:">
+
+            <button type="submit">Enviar formulário</button>
+        </form>
+
+        <button @click.once="showAlert">Clique Me!</button><!-- Vai disparar o evento uma única vez -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                textLink: 'iKotei Consultoria',
+                urlLink: 'http://www.ikotei.com'
+            },
+            methods: {
+                showAlert (event) {
+                    //event.preventDefault(); // pode ser substituído pela propriedade @click.prevent na própria tag
+                    
+                    alert("Clicou no link")
+                }
+            },
+        })
+    </script>
+</body>
+</html>

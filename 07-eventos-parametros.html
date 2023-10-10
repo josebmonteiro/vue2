@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Eventos Vue JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <div id="app">
+        <input type="text" @keyup="changeInput">
+        {{ count }}
+        <button @click="changeInputTwo(2)">Incrementar</button>
+
+        <input type="text" @keyup="changeInputThree(2, $event)">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                changeInput: function (event) {
+                    //alert('Alterou...')
+                    //this.count++
+                    console.log(event.target.value) // pegando o valor do input
+                },
+                changeInputTwo: function (value) {
+                    this.count += value
+                },
+                changeInputThree (value, event) {
+                    //console.log(event.target.value)
+                    value += parseInt(event.target.value) // Tudo o que digitar vai concatenar
+                    this.count += value
+                }
+            },
+        })
+    </script>
+</body>
+</html>

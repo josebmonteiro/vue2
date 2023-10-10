@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Style Vue JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        .active{background: green;}
+        .no-active{background: red;}
+        .default{color: yellow;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="isActive = !isActive">Alterar Class</button>
+        <div v-bind:class="{active : isActive}">
+            Exemplo Style Vue
+        </div>
+
+        <div :class="isActive ? 'active' : 'no-active'">
+            Exemplo 2
+        </div>
+
+        <div class="default" :class="isActive ? 'active' : 'no-active'">
+            Exemplo 3
+        </div>
+
+        <div :class="['default', isActive ? 'active' : 'no-active']">
+            Exemplo 3/2
+        </div>
+
+        <div :class="classObject">
+            Exemplo 4
+        </div>
+
+        <div :style="{display: ['-webkit-flex', '-moz-flex', 'flex']}"><!-- Incluir a class dinamicamente dependendo do navegador -->
+            Exemplo 5
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isActive: false,
+                classObject: {
+                    active: true, // Para nome de variável simples, sem separação, criar direto sem aspas
+                    'text-red': true, // Para nome de variável composto, com separação, criar usando aspas simples
+                    'color-white': true
+                }
+            }
+        })
+    </script>
+</body>
+</html>

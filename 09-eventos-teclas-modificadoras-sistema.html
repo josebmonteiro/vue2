@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Eventos de Teclas Modificadoras do Sistema no Vue JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <div id="app">
+        <div @click.ctrl="testeEvent">
+            Clique Aqui com a tecla ctrl!!!
+        </div>
+        <hr>
+        <div @click.alt="testeEvent">
+            Clique Aqui com a tecla alt!!!
+        </div>
+        <hr>
+        <div @click.shift="testeEvent">
+            Clique Aqui com a tecla shift!!!
+        </div>
+        <hr>
+        <div @click.meta="testeEvent">
+            Clique Aqui com a tecla Bandeirinha do Windows!!!
+        </div>
+        <hr>
+        <div @click.ctrl.63="testeEvent">
+            Clique Aqui com a tecla ctrl + c!!!
+        </div>
+        <hr>
+        <div @click.ctrl.exact="testeEvent">
+            Clique Aqui com apenas a tecla ctrl!!!
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                
+            },
+            methods: {
+                testeEvent (event) {
+                    alert("Teste")
+                }
+            },
+        })
+    </script>
+</body>
+</html>

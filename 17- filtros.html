@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Filtros Vue JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        .active{background: green;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <ul>
+            <li v-for="task in tasks" :class="{active: task.completed}">
+                {{ task.id }} - {{ task.name | toUpperCase }} - {{ task.name | toLowerCase }}
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        Vue.filter('toLowerCase', function (val) { // Filtro Global, para qualquer parte do projeto
+            return val.toLowerCase()
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Lista de Tarefas',
+                tasks: [
+                    {id:1, name: 'Lavar Louça', completed: false},
+                    {id:2, name: 'Lavar Carro', completed: true},
+                    {id:3, name: 'Lavar Moto', completed: false},
+                    {id:4, name: 'Lavar Banheiro', completed: true}
+                ]
+            },
+            filters: { // Filtro local, para um componente especifico
+                toUpperCase (val) {
+                    return val.toUpperCase()
+                }
+            }
+        })
+    </script>
+</body>
+</html>
